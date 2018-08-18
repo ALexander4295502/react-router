@@ -1,13 +1,28 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 
 import "./App.css";
 
+const isActiveFunc = (match, location) => {
+  console.log(match, location);
+  return match;
+};
+
 const Links = () => (
   <nav>
-    <Link to="/">Home</Link>
-    <Link to="/about">About</Link>
-    <Link replace to="/contact">Contact</Link>
+    <NavLink exact activeClassName="active" to="/">
+      Home
+    </NavLink>
+    <NavLink activeStyle={{ color: "red" }} to="/about">
+      About
+    </NavLink>
+    <NavLink
+      isActive={isActiveFunc}
+      activeStyle={{ color: "red" }}
+      to="/contact"
+    >
+      Contact
+    </NavLink>
   </nav>
 );
 
